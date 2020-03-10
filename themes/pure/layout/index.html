@@ -21,6 +21,16 @@
   <link rel="stylesheet" href="./styles/css">
   <link rel="stylesheet" href="./styles/main.css">
   <script src="https://kit.fontawesome.com/dc67c4e861.js" crossorigin="anonymous"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150811175-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-150811175-1');
+  </script>
 </head>
 
 <body>
@@ -73,7 +83,7 @@
               </div>
 
               <div class="cluster">
-                <div class="icon" title="last movie watched">
+                <div class="icon">
                   <i class="fas fa-paint-roller"></i>
                 </div>
                 <div>
@@ -96,14 +106,13 @@
       <div id="projects">
         <div class="category-filter">
           <h4 class="category active" category="all">all</h4>
-          <h4 class="category" category="code">ux/ui</h4>
-          <h4 class="category" category="design">development</h4>
-          <h4 class="category" category="make">make</h4>
+          <h4 class="category" category="uxui">ux/ui</h4>
+          <h4 class="category" category="development">development</h4>
         </div>
 
         {{each(options.siteMeta.pages)}}
         {{if(@this.publish && @this.inList)}}
-        <div class="project category-code">
+        <div class="project category-uxui">
           <a href="{{@this.url}}">
             <div class="arrow">
               <i class="far fa-arrow-alt-circle-right"></i>
@@ -113,10 +122,10 @@
             <div class="thumbnail" style="background-image:linear-gradient(180deg, rgba(255,255,255,0) 20%, rgba(0,0,0,0.2)), url({{@this.cover}})"></div>
             <div class="info">
               <div class="title">
-              <h2>{{@this.title}}</h2>
-              {{each(@this.tags)}}
-              <span class="DateTagBar__Tag DateTagBar__Tag--{{@this.color}}">{{@this.value}}</span>
-              {{/each}}
+                <h2>{{@this.title}}</h2>
+                {{each(@this.tags)}}
+                <span class="DateTagBar__Tag DateTagBar__Tag--{{@this.color}}">{{@this.value}}</span>
+                {{/each}}
               </div>
               {{if(@this.descriptionHTML)}}
               <p class="subtitle"><i>{{@this.descriptionHTML}}</i></p>

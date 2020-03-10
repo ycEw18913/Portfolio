@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- charset -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- viewport scaling -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- social media metadata -->
+  <meta property="og:title" content="{{siteMeta.title}}">
+  {{if(options.siteMeta.description.length > 0)}}
+  <meta property="og:description" content="{{siteMeta.descriptionPlain}}">
+  {{/if}}
+  <meta property="og:type" content="blog">
+  <title>{{siteMeta.title}}</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="{{siteMeta.icon}}">
+  <!-- font awesome, google fonts, typekit, and css -->
+  <link rel="stylesheet" href="./styles/efj2qst.css">
+  <link rel="stylesheet" href="./styles/pygments.css">
+  <link rel="stylesheet" href="./styles/css">
+  <link rel="stylesheet" href="./styles/main.css">
+  <script src="https://kit.fontawesome.com/dc67c4e861.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="Navbar">
+    <a href="index.html">
+      <div class="Navbar__Btn">{{siteMeta.iconHTML}} <span>Works</span></div>
+    </a>
+    {{each(options.siteMeta.pages)}}
+    {{if(@this.publish && @this.inMenu)}}
+    <span class="Navbar__Delim">&centerdot;</span>
+    <a href="{{@this.url}}">
+      <div class="Navbar__Btn">{{@this.iconHTML}} <span>{{@this.title}}</span></div>
+    </a>
+    {{/if}}
+    {{/each}}
+  </nav>
+
+  <!-- flash messages -->
+  <div id="main">
+    <div class="container">
+      <div class="sidebar">
+        <div class="content">
+          <a href="index.html">
+            <h1 class="title">{{siteMeta.title}}</h1>
+          </a>
+          {{if(options.siteMeta.description)}}
+          <div>
+            <p>{{siteMeta.descriptionHTML}}</p>
+          </div>
+          {{/if}}
+
+          <div class="stats">
+            <div class="content">
+              <div class="cluster">
+                <div class="icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <div>
+                  <p><i><b>currently: </b></i>looking for 2020 summer UX internship</p>
+                </div>
+              </div>
+
+              <div class="cluster">
+                <div class="icon">
+                  <i class="fas fa-tools"></i>
+                </div>
+                <div>
+                  <p><a href="https://maximusology.netlify.com/now.html"><i>project: </i>VR Hand Tracking Haptic Feedback Tool</a></p>
+                </div>
+              </div>
+
+              <div class="cluster">
+                <div class="icon" title="last movie watched">
+                  <i class="fas fa-paint-roller"></i>
+                </div>
+                <div>
+                  <p><a href="https://maximusology.netlify.com/now.html"><i>project: </i>Univesal Modular Presenting System</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="social">
+            <li><a href="https://www.facebook.com/ycEw18913" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+            <li><a href="https://medium.com/@ycEw18913" target="_blank"><i class="fab fa-medium"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/yc-wu/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://dribbble.com/YCEthanWu" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+            <li><a href="https://github.com/ycEw18913" target="_blank"><i class="fab fa-github"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="projects">
+        <div class="category-filter">
+          <h4 class="category active" category="all">all</h4>
+          <h4 class="category" category="code">ux/ui</h4>
+          <h4 class="category" category="design">development</h4>
+          <h4 class="category" category="make">make</h4>
+        </div>
+
+        {{each(options.siteMeta.pages)}}
+        {{if(@this.publish && @this.inList)}}
+        <div class="project category-code">
+          <a href="{{@this.url}}">
+            <div class="arrow">
+              <i class="far fa-arrow-alt-circle-right"></i>
+            </div>
+          </a>
+          <a href="{{@this.url}}">
+            <div class="thumbnail" style="background-image:linear-gradient(180deg, rgba(255,255,255,0) 20%, rgba(0,0,0,0.2)), url({{@this.cover}})"></div>
+            <div class="info">
+              <div class="title">
+              <h2>{{@this.title}}</h2>
+              {{each(@this.tags)}}
+              <span class="DateTagBar__Tag DateTagBar__Tag--{{@this.color}}">{{@this.value}}</span>
+              {{/each}}
+              </div>
+              {{if(@this.descriptionHTML)}}
+              <p class="subtitle"><i>{{@this.descriptionHTML}}</i></p>
+              {{/if}}
+            </div>
+          </a>
+        </div>
+        {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts -->
+  <script src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
+
+</body>
+
+</html>
